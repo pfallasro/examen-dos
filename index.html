@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="lib/jquery/jquery-1.10.2.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular/angular-local-storage.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/bootstrap/bootstrap.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+          <h1 class="text-muted">Ahorcado</h1>
+        </div>
+
+        <div ng-controller="AhorcadoCntrl">
+
+            <div class="alert alert-success" ng-show="success">
+                <h4>Has ganado el juego!  <a ng-click="init()">Jugar de nuevo?</a></h4>
+            </div>
+
+            <div class="alert alert-danger" ng-show="fail">
+                <h4>Has perdido el juego! <a ng-click="init()">Jugar de nuevo?</a></h4>
+            </div>
+
+            <div class="jumbotron" ng-hide="cuerpoJuego">
+                <div class="row">
+                    <div id="campos" class="col-md-4">
+                        <div class="input-group" ng-repeat="campo in campos">
+                            <input type="text" class="form-control" ng-model="campo.letra" ng-blur="removerLetras(campo)">
+                        </div>
+                        <button class="btn btn-info" ng-click="validar()">Evaluar</button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <h1>Intento {{intentos}} de 3!</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
